@@ -1,36 +1,46 @@
-import { useEffect ,useState} from "react";
+import React from "react";
+import Sidebar, { SidebarItem } from "./Sidebar";
+import {
+  LifeBuoy,
+  Receipt,
+  Boxes,
+  Package,
+  UserCircle,
+  BarChart3,
+  LayoutDashboard,
+  Settings,
+} from "lucide-react";
+import useTheme from "./useTheme";
 
-function App(){
+export default function App() {
+  const [theme, toggleTheme] = useTheme();
 
-  const[theme,setTheme] = useState(() =>{
-    if(window.matchMedia("(prefers-color-scheme: dark)").matches){
-      return "dark";
-    }
-    return"light";
-  });
-
-  useEffect(() =>{
-    if(theme === "dark"){
-      document.querySelector("html").classList.add("dark")
-    }else{
-      document.querySelector("html").classList.remove("dark")
-    }
-  },[theme]);
-
-  const handleChangeTheme = () =>{
-    setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
-  };
-
-  return(
-    <div className="h-screen flex justify-center items-center dark:bg-neutral-900">
-      <button
-        className="bg-slate-200 px-4 py-2 rounded hover:bg-slate-300 dark:bg-slate-950 dark:text-white dark:hover:bg-slate-900"
-        onClick={handleChangeTheme}
-      >
-        Change theme
-      </button>
+  return (
+    <div className="flex h-screen">
+      <Sidebar toggleTheme={toggleTheme}>
+        <SidebarItem
+          icon={<LayoutDashboard size={20} />}
+          text="Dashboard"
+          alert
+        />
+        <SidebarItem icon={<BarChart3 size={20} />} text="Statics" active />
+        <SidebarItem icon={<UserCircle size={20} />} text="Users" />
+        <SidebarItem icon={<Boxes size={20} />} text="Inventory" />
+        <SidebarItem icon={<Package size={20} />} text="Orders" alert />
+        <SidebarItem icon={<Receipt size={20} />} text="Billings" />
+        <hr className="my-3" />
+        <SidebarItem icon={<Settings size={20} />} text="Settings" />
+        <SidebarItem icon={<LifeBuoy size={20} />} text="Help" />
+        <SidebarItem
+          icon={<LifeBuoy size={20} />}
+          text="Change Theme"
+          onClick={toggleTheme}
+        />
+      </Sidebar>
+      <main className="flex-1 p-6">
+        {/* Aquí iría el contenido principal de tu aplicación */}
+        <h1>Contenido Principal</h1>
+      </main>
     </div>
-  )
+  );
 }
-
-export default App
