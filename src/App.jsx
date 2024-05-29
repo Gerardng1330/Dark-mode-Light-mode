@@ -20,24 +20,24 @@ export default function App() {
       <Sidebar toggleTheme={toggleTheme}>
         <SidebarItem
           icon={<LayoutDashboard size={20} />}
-          text="Dashboard"
+          text="Panel"
           alert
         />
-        <SidebarItem icon={<BarChart3 size={20} />} text="Statics" active />
-        <SidebarItem icon={<UserCircle size={20} />} text="Users" />
-        <SidebarItem icon={<Boxes size={20} />} text="Inventory" />
-        <SidebarItem icon={<Package size={20} />} text="Orders" alert />
-        <SidebarItem icon={<Receipt size={20} />} text="Billings" />
+        <SidebarItem icon={<BarChart3 size={20} />} text="Estadisticas" active />
+        <SidebarItem icon={<UserCircle size={20} />} text="Usuarios" />
+        <SidebarItem icon={<Boxes size={20} />} text="Inventario" />
+        <SidebarItem icon={<Package size={20} />} text="Pedidos" alert />
+        <SidebarItem icon={<Receipt size={20} />} text="Facturaciones" />
         <hr className="my-3" />
-        <SidebarItem icon={<Settings size={20} />} text="Settings" />
-        <SidebarItem icon={<LifeBuoy size={20} />} text="Help" />
+        <SidebarItem icon={<Settings size={20} />} text="Ajustes" />
+        <SidebarItem icon={<LifeBuoy size={20} />} text="Ayuda" />
         <SidebarItem
           icon={<LifeBuoy size={20} />}
-          text="Change Theme"
+          text="Cambiar tema"
           onClick={toggleTheme}
         />
       </Sidebar>
-      <main className="flex-1 p-6">
+      <main className="flex h-screen">
         {/* Aquí iría el contenido principal de tu aplicación */}
         <h1>Contenido Principal</h1>
       </main>
